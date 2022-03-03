@@ -17,9 +17,9 @@ const Home = () => {
               setData(response.data)})
   }
 
-    // useEffect(()=>{
-    //   fetchData();
-    // },[])
+    useEffect(()=>{
+      fetchData();
+    },[])
   
     useEffect(()=>{
       window.scrollTo(0, 0)
