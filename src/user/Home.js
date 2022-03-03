@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { MDBBtn,MDBIcon } from 'mdb-react-ui-kit';
 import { MDBCard, MDBCardImage,MDBCardTitle} from 'mdb-react-ui-kit';
+import GridLoader from "react-spinners/GridLoader";
 
 const Home = () => {
   
-  const [data,setData] = useState([])
+  const [data,setData] = useState(null)
   const [display,setDisplay] = useState(-1)
 
     const fetchData = async () =>{
@@ -16,14 +17,17 @@ const Home = () => {
               setData(response.data)})
   }
 
-    useEffect(()=>{
-      fetchData();
-    },[])
+    // useEffect(()=>{
+    //   fetchData();
+    // },[])
   
     useEffect(()=>{
       window.scrollTo(0, 0)
     },[display])
-  return (
+  
+  
+  
+    return (
     <div className="Container">
       <div className="header">
         <div className="header__menu">
@@ -31,9 +35,10 @@ const Home = () => {
         </div>
         <img className='logo' width={'30%'} height={'30%'} src="https://i.imgur.com/iIb4ZfB.png" alt="" />
         </div>
+        
         <div className="body">
-          {
-            display === -1 ? 
+          {data !== null ? 
+            (display === -1 ? 
             (<div style={{display: 'flex',flexDirection: 'row',flexWrap: 'wrap',justifyContent:'center'}} className='body__home'>
               
               {data.map((element,index)=>(
@@ -66,8 +71,14 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              )
-          }
+              ))  
+        :
+        (
+          <GridLoader color="green" css={`
+            position: absolute;
+            left: 50%;`} />
+        )
+        }
         </div>
       <div className='footer'>
         <span>Copyright - After Eight</span>
