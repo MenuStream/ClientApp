@@ -9,7 +9,14 @@ import Home from './user/Home'
 function App() {
   
   return (
-    <Home></Home>
+    // <Router>
+    //   <Navbar/>
+    //   <Routes>
+    //     <Route exact path="/" element={<Categories/>}/>
+    //     <Route path="/editarticles" element={<Articles/>}/>
+    //   </Routes>
+    // </Router>
+    <Home/>
   );
 }
 

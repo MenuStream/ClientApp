@@ -11,7 +11,7 @@ export default function Categories() {
   const [data,setData] = useState([])
 
   const fetchData = async () =>{
-    const url = 'http://localhost:8000/data'
+    const url = 'https://aftereight.herokuapp.com/data'
     await axios.get(url)
         .then(response => {
             console.log(response.data)
@@ -19,7 +19,7 @@ export default function Categories() {
 }
 
   const deleteCategory = (id)=> {
-    axios.delete(`http://localhost:8000/data/${id}`)
+    axios.delete(`https://aftereight.herokuapp.com/data/${id}`)
             .then(response => console.log(response))
             .then(window.location.reload(true))
             .catch(error => console.log(error))

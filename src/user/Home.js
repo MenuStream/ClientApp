@@ -20,6 +20,9 @@ const Home = () => {
       fetchData();
     },[])
   
+    useEffect(()=>{
+      window.scrollTo(0, 0)
+    },[display])
   return (
     <div className="Container">
       <div className="header">

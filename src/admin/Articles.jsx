@@ -32,7 +32,7 @@ const Articles = () => {
       }
 
     const handleSubmit = () => (
-        axios.put(`http://localhost:8000/data/article/${category._id}`,
+        axios.put(`https://aftereight.herokuapp.com/data/article/${category._id}`,
         {articles: Articles,name: name, image_url: image_url})
             .then(response => console.log(response))
             .catch(error => console.log(error))
@@ -55,7 +55,7 @@ const Articles = () => {
     }
 
    const handleSubmitName = ()=> {
-        axios.put(`http://localhost:8000/data/${category._id}`,
+        axios.put(`https://aftereight.herokuapp.com/data/${category._id}`,
         {name: name,image_url: image_url})
             .then(response => console.log(response))
             .catch(error => console.log(error))
