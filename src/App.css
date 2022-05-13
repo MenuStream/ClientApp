@@ -1,6 +1,7 @@
 html {
   font-family: 'Open Sans';
   text-transform: uppercase;
+  scroll-behavior: smooth;
 }
 
 
@@ -135,48 +136,22 @@ html {
 }
 
 
+/* loader */
 
 
-
-
-
-.modalContainer {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+@keyframes loaderAnimation {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
-
-.modalBackground {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  background-color: rgba(12, 12, 12, 0.4);
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-
-
-.modalBox {
-  width: fit-content;
-  height: fit-content;
-  background-color: #efefef;
-  z-index: 2;
-}
-
-
-
-.modalBox img {
-  width: 500px;
+#loader {
+  position: absolute; 
+  left: 50%; top: 50%; 
+  transform: translate(-50%, -50%);
+  width: 100px;
   height: auto;
+  animation: loaderAnimation 2s ease-in infinite both;
 }
 
 
@@ -204,9 +179,5 @@ html {
   .header_text {
     font-size: 8vw;
   }
-  .modalBox img {
-    width: 70vw;
-    height: auto;
-  }
-  
 }
+
