@@ -1,15 +1,20 @@
-import React from 'react'
+import React from "react";
 
 const Header = (props) => {
   return (
     <div className="header">
-        <img className='logo' width={'30%'} height={'30%'} src="https://i.imgur.com/iIb4ZfB.png" alt="" />
-        <div className="header_menu">
-          <h5 className='header_text' onClick={()=>props.setDisplay(-1)}>MENU</h5>
-        </div>
-        
+      <img
+        className="logo"
+        width={"30%"}
+        height={"30%"}
+        src="https://i.imgur.com/iIb4ZfB.png"
+        alt=""
+      />
+      <div className="header_text_container">
+        <h5 className="header_text">MENU</h5>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

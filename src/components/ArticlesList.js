@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { MDBIcon } from "mdb-react-ui-kit";
-import { useSpring, animated } from "react-spring";
 import ImageModal from "./ImageModal";
+import { Link } from "react-router-dom";
 
 const ArticlesList = (props) => {
-  const fadeIn = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    delay: 80,
-  });
+  const { index, data } = props;
 
   const [Modal, setModal] = useState(false);
   const [image, setImage] = useState(null);
@@ -24,50 +20,52 @@ const ArticlesList = (props) => {
 
   return (
     <>
-      <animated.div style={fadeIn} className="body_category">
-        <MDBIcon
-          onClick={() => props.setDisplay(-1)}
-          style={{ marginBottom: "50px", cursor: "pointer" }}
-          fas
-          size="2x"
-          icon="arrow-circle-left"
-        />
+      {data && (
+        <div className="articleList">
+          <Link to="/">
+            <MDBIcon
+              style={{ marginBottom: "50px", cursor: "pointer" }}
+              fas
+              size="2x"
+              icon="arrow-circle-left"
+            />
+          </Link>
 
-        <div className="category">
-          <h1 className="category_name">{props.data[props.display].name}</h1>
-          <div className="category_articles">
-            {props.data[props.display].articles.map((article) => (
-              <div key={article.name} className="article">
-                <div className="article_container">
-                  <div>
-                    <span
-                      className="article_name"
-                      style={{ marginRight: "10px" }}
-                    >
-                      {article.name}
+          <div className="articleList_body">
+            <h1 className="articleList_body_name">{data[index].name}</h1>
+            <div className="articleList_body_list">
+              {data[index].articles.map((article) => (
+                <div key={article.name} className="article">
+                  <div className="article_container">
+                    <div>
+                      <span
+                        className="article_name"
+                        style={{ marginRight: "10px" }}
+                      >
+                        {article.name}
+                      </span>
+
+                      {article.image && (
+                        <MDBIcon
+                          fas
+                          icon="camera"
+                          size="sm"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => showModal(article.image)}
+                        />
+                      )}
+                    </div>
+                    <span className="article_description">
+                      {article.description}
                     </span>
-
-                    {article.image && (
-                      <MDBIcon
-                        fas
-                        icon="camera"
-                        size="sm"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => showModal(article.image)}
-                      />
-                    )}
                   </div>
-                  <span className="article_description">
-                    {article.description}
-                  </span>
+                  <span className="article_price">{article.price}</span>
                 </div>
-                <span className="article_price">{article.price}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </animated.div>
-
+      )}
       {Modal && <ImageModal hideModal={hideModal} imageUrl={image} />}
     </>
   );
