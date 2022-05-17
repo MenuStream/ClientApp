@@ -2,11 +2,11 @@ import "./App.css";
 import Home from "./Pages/Home";
 import ArticlePage from "./Pages/ArticlePage";
 import ReactGA from "react-ga";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState, createContext } from "react";
 import axios from "axios";
 
-const TRACKING_ID = "G-DMTNV3NNLB"; // OUR_TRACKING_ID
+const TRACKING_ID = "G-XBWCQ0GGBM"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 export const ContextProvider = createContext(null);
