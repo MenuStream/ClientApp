@@ -6,13 +6,18 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ArticlesList from "../components/ArticlesList";
 import BackgroundLogo from "../components/BackgroundLogo";
+import { gtag } from "ga-gtag";
 
 const ArticlePage = () => {
-  const Context = useContext(ContextProvider);
+  const { data } = useContext(ContextProvider);
   const { index } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    data && gtag("event", "page_view", { page_title: data[index].name });
   }, []);
 
   return (
@@ -22,7 +27,7 @@ const ArticlePage = () => {
         <Header />
       </Link>
       <div className="home_body">
-        <ArticlesList data={Context.data} index={index} />
+        <ArticlesList data={data} index={index} />
       </div>
       <Footer />
     </div>

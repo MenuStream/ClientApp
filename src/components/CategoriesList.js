@@ -3,11 +3,7 @@ import { MDBCard, MDBCardImage, MDBCardTitle } from "mdb-react-ui-kit";
 
 import { Link } from "react-router-dom";
 
-import useAnalyticsEventTracker from "./useAnalyticsEventTracker";
-
 const CategoriesList = (props) => {
-  const gaEventTracker = useAnalyticsEventTracker("Articles");
-
   return (
     <div className="category">
       {props.data.map((element, index) => (
@@ -18,9 +14,6 @@ const CategoriesList = (props) => {
           <MDBCard
             key={element.name}
             className="MDBCard-Home hover-zoom"
-            onClick={() => {
-              gaEventTracker("Category ", element.name);
-            }}
             style={{ textAlign: "center", margin: "20px", cursor: "pointer" }}
           >
             <MDBCardImage
