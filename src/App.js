@@ -3,7 +3,7 @@ import ArticlePage from "./Pages/ArticlePage";
 import Landing from "./Pages/Landing";
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate,
