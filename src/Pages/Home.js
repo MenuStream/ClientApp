@@ -1,30 +1,27 @@
-import React, { useEffect, useContext } from "react";
-import { ContextProvider } from "../App";
+import React, { useEffect } from "react";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import CategoriesList from "../components/CategoriesList";
+import "./Home.css";
+import Header from "../MenuComponents/Header";
+import Footer from "../MenuComponents/Footer";
+import CategoriesList from "../MenuComponents/CategoriesList";
 import loader from "../assets/loader.png";
-import BackgroundLogo from "../components/BackgroundLogo";
+import BackgroundLogo from "../MenuComponents/BackgroundLogo";
 
-const Home = () => {
-  const Context = useContext(ContextProvider);
+const Home = ({ Context }) => {
+  const { data, scrollPosition, setScrollPosition } = Context;
 
   useEffect(() => {
-    window.scrollTo(0, Context.scrollPosition);
-  }, [Context.scrollPosition]);
+    window.scrollTo(0, scrollPosition);
+  }, [scrollPosition]);
 
   return (
     <>
-      {Context.data !== null ? (
+      {data !== null ? (
         <div className="home">
           <BackgroundLogo />
           <Header />
           <div className="home_body">
-            <CategoriesList
-              data={Context.data}
-              setScrollPosition={Context.setScrollPosition}
-            />
+            <CategoriesList data={data} setScrollPosition={setScrollPosition} />
           </div>
           <Footer />
         </div>
