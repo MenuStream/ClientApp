@@ -17,18 +17,52 @@
   scroll-behavior: smooth;
   padding: 50px;
   position: relative;
-
-
 }
+
+.loader_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(27, 31, 36);
+}
+
+@keyframes TitleAnimation {
+  0% {left: -200px}
+  100% {left: 0}
+}
+@keyframes TitleSpanAnimation {
+  0% {color: var(--color-white)}
+  100% {color: var(--color-green)}
+}
+@keyframes TextDescriptionAnimation {
+  0% {transform: scale(0.01);}
+  70% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+@keyframes blurAnimation {
+  0%{filter: blur(20px);transform: scale(1);}
+  100% {filter: blur(3px)}
+}
+@keyframes fadeAnimation {
+  0%{opacity: 0;}
+  100% {opacity: 1;}
+}
+
+
 
 .landing-content {
     margin-top: 30px;
     max-width: 1000px;
+
 }
 
 .landing-header-logo {
     max-width: 300px;
     margin: auto;
+    animation: fadeAnimation 1s;
+    animation-timing-function:cubic-bezier(0.39, 0.32, 0, 1.02);
 }
 
 .landing-background {
@@ -56,24 +90,33 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(3px);
+    filter: blur(3px);  
     transform: scale(1.03);
+    
 }
 
 .text-title {
-    font-size: min(8vw,70px);
+    position: relative;  
+  font-size: min(8vw,70px);
     font-weight: bold;
     line-height: 1.2em;
     text-transform: capitalize;
-    text-shadow: 7px 4px 15px rgba(0,0,0,0.3);
-    
+    text-shadow: 7px 4px 15px rgba(0,0,0,0.3);  
+    animation-name: TitleAnimation;
+    animation-duration: 0.8s;
+    animation-delay: 0.4ms;
 }
+
 
 .text-description {
     font-size: 3vw;
     line-height: 1.2em;
     text-shadow: 7px 4px 15px rgba(0,0,0,0.1);
     font-weight: 400;
+    animation-name: TextDescriptionAnimation ;
+    animation: TextDescriptionAnimation 0.8s 0.5s backwards;
+    animation-delay: 0.4ms;
+
 }
 
 
@@ -83,7 +126,9 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    max-width: 350px;
+    max-width: 400px;
+    animation: TextDescriptionAnimation 0.8s 0.5s backwards;
+    animation-delay: 0.4ms;
 }
 
 .btn {
@@ -93,11 +138,11 @@
   font-size: 16px;
   border-radius: 40px;
   text-align: center;
-  padding: 16px 30px;
+  padding: 16px 50px;
+
   transition: var(--transition);
   cursor: pointer;
 }
-
 
 
 .btn_green {
@@ -124,6 +169,17 @@ a.callus-link {
   color: #04a804;
 }
 
+.phoneIcon {
+  transition: transform 2s;
+}
+
+
+a.callus-link:active .phoneIcon {
+  transform:rotate(-360deg);
+  transition: 0s;
+}
+
+
 @media (max-width: 800px) {
 
     /* .landing-container {
@@ -143,6 +199,34 @@ a.callus-link {
   }
   .text-description {
     font-size: 5vw;
+  }
+  .btn {
+    padding: 16px 40px;
+  }
+
+  .buttons {
+    justify-content: space-around;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    width: 80%;
+    padding: 16px auto;
+    margin: auto;
+  }
+  .btn_menu {
+    width: 100%;
+  }
+  .buttons .router_link {
+    width: 80%;
+    margin: auto;
   }
 }
 
