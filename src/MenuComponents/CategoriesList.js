@@ -19,7 +19,7 @@ const CategoriesList = (props) => {
             >
               <MDBCardImage
                 className="MDBCardImage-Home "
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", overflow: "hidden" }}
                 overlay
                 src={element.image_url}
                 alt="..."
