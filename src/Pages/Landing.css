@@ -97,7 +97,7 @@
 
 .text-title {
     position: relative;  
-  font-size: min(8vw,70px);
+    font-size: min(8vw,70px);
     font-weight: bold;
     line-height: 1.2em;
     text-transform: capitalize;
